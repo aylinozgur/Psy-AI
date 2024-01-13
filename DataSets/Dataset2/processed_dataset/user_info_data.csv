@@ -1,0 +1,56 @@
+UserId,Age,Gender,Social media usage,Notification Response,SMA Score,SMA Label
+1,19 - 25,Male,1 - 2 hours,As soon as possible,18,Moderate Addiction
+2,19 - 25,Male,3 - 4 hours,Immediately only if it's important,21,High Addiction
+3,19 - 25,Male,3 - 4 hours,Whenever took a phone,14,Moderate Addiction
+4,19 - 25,Male,less than a hour,Whenever took a phone,10,Low Addiction
+5,19 - 25,Male,more than 4 hours,Immediately only if it's important,19,Moderate Addiction
+6,19 - 25,Female,1 - 2 hours,I Don't respond if it's not important,14,Moderate Addiction
+7,19 - 25,Female,1 - 2 hours,Whenever took a phone,16,Moderate Addiction
+8,19 - 25,Female,2 - 3 hours,Whenever took a phone,13,Moderate Addiction
+9,19 - 25,Female,more than 4 hours,As soon as possible,16,Moderate Addiction
+10,19 - 25,Male,3 - 4 hours,I Don't respond if it's not important,12,Moderate Addiction
+11,19 - 25,Male,2 - 3 hours,Immediately only if it's important,16,Moderate Addiction
+12,13 - 18,Male,more than 4 hours,Whenever took a phone,21,High Risk Of Addiction
+13,19 - 25,Male,3 - 4 hours,Immediately,22,High Addiction
+14,13 - 18,Male,1 - 2 hours,Whenever took a phone,17,Moderate Addiction
+15,19 - 25,Female,2 - 3 hours,Whenever took a phone,9,Low Addiction
+16,19 - 25,Male,less than a hour,I put off notifications,13,Moderate Addiction
+17,19 - 25,Female,3 - 4 hours,Immediately,10,Low Addiction
+18,19 - 25,Male,2 - 3 hours,Whenever took a phone,16,Moderate Addiction
+19,19 - 25,Male,1 - 2 hours,I Don't respond if it's not important,10,Low Addiction
+20,19 - 25,Female,1 - 2 hours,I Don't respond if it's not important,12,Moderate Addiction
+21,> 35,Male,1 - 2 hours,I Don't respond if it's not important,8,Low Addiction
+22,> 35,Male,1 - 2 hours,I put off notifications,8,Low Addiction
+23,> 35,Male,less than a hour,I Don't respond if it's not important,6,Low Addiction
+24,> 35,Male,3 - 4 hours,I put off notifications,9,Low Addiction
+25,19 - 25,Male,1 - 2 hours,Immediately only if it's important,14,Moderate Addiction
+26,26 - 35,Male,1 - 2 hours,Immediately only if it's important,16,Moderate Addiction
+27,26 - 35,Male,1 - 2 hours,I Don't respond if it's not important,19,Moderate Addiction
+28,26 - 35,Male,2 - 3 hours,I Don't respond if it's not important,16,Moderate Addiction
+29,19 - 25,Female,more than 4 hours,Whenever took a phone,20,High Risk Of Addiction
+30,> 35,Female,1 - 2 hours,Whenever took a phone,21,High Addiction
+31,26 - 35,Male,3 - 4 hours,I put off notifications,17,Moderate Addiction
+32,26 - 35,Male,2 - 3 hours,Immediately only if it's important,11,Low Addiction
+33,19 - 25,Male,2 - 3 hours,I put off notifications,15,Moderate Addiction
+34,26 - 35,Female,less than a hour,I put off notifications,14,Moderate Addiction
+35,> 35,Male,less than a hour,Immediately only if it's important,6,Low Addiction
+36,> 35,Male,2 - 3 hours,I Don't respond if it's not important,17,Moderate Addiction
+37,19 - 25,Male,2 - 3 hours,Whenever took a phone,18,Moderate Addiction
+38,13 - 18,Male,1 - 2 hours,Immediately only if it's important,22,High Risk Of Addiction
+39,19 - 25,Male,1 - 2 hours,Whenever took a phone,19,Moderate Addiction
+40,> 35,Male,2 - 3 hours,Whenever took a phone,12,Moderate Addiction
+41,> 35,Male,1 - 2 hours,Immediately only if it's important,12,Moderate Addiction
+42,19 - 25,Male,1 - 2 hours,Immediately only if it's important,15,Moderate Addiction
+43,19 - 25,Male,less than a hour,Whenever took a phone,15,Moderate Addiction
+44,19 - 25,Male,less than a hour,I Don't respond if it's not important,14,Moderate Addiction
+45,19 - 25,Female,1 - 2 hours,I put off notifications,12,Moderate Addiction
+46,26 - 35,Female,less than a hour,I Don't respond if it's not important,12,Moderate Addiction
+47,19 - 25,Male,2 - 3 hours,As soon as possible,15,Moderate Addiction
+48,19 - 25,Female,2 - 3 hours,I Don't respond if it's not important,7,Low Addiction
+49,> 35,Male,1 - 2 hours,Immediately only if it's important,16,Moderate Addiction
+50,19 - 25,Male,3 - 4 hours,As soon as possible,18,Moderate Addiction
+51,19 - 25,Female,2 - 3 hours,I Don't respond if it's not important,18,Moderate Addiction
+52,19 - 25,Male,2 - 3 hours,Immediately only if it's important,9,Low Addiction
+53,19 - 25,Male,less than a hour,I Don't respond if it's not important,14,Moderate Addiction
+54,19 - 25,Male,1 - 2 hours,I Don't respond if it's not important,13,Moderate Addiction
+55,19 - 25,Male,2 - 3 hours,I Don't respond if it's not important,13,Moderate Addiction

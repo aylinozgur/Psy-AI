@@ -1,0 +1,5 @@
+preprocessed_dataset.csv : 
+- created from collected_dataset by changing column name for making things readable and easier.
+
+tips_data.csv, ratings_data.csv, user_info_data.csv : 
+- created from preprocessed_dataset.csv to make it compitable to use with recommendation model.

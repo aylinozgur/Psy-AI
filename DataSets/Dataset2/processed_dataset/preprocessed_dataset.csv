@@ -1,0 +1,56 @@
+Age,Gender,You are using social media since ,Social media usage,Notification Response,SMAQ1,SMAQ2,SMAQ3,SMAQ4,SMAQ5,SMAQ6,Tip1,Tip2,Tip3,Tip4,Tip5,Tip6,Tip7,Tip8,Tip9,Tip10,Tip11,Tip12,Tip13,Tip14,Tip15,Tip16,Tip17,SMAQ1D,SMAQ2D,SMAQ3D,SMAQ4D,SMAQ5D,SMAQ6D,SMA,SMA_LABEL
+19 - 25,Male,3 years,1 - 2 hours,As soon as possible,sometimes,sometimes,sometimes,sometimes,sometimes,sometimes,0,4,4,0,4,4,4,3,4,4,4,4,3,4,4,4,4,3,3,3,3,3,3,18,Moderate Addiction
+19 - 25,Male,5 years,3 - 4 hours,Immediately only if it's important,rarely,sometimes,often,often,often,often,3,4,4,4,5,5,5,5,5,5,5,5,5,5,4,5,5,2,3,4,4,4,4,21,High Addiction
+19 - 25,Male,2 years,3 - 4 hours,Whenever took a phone,sometimes,often,Very rarely,Very rarely,Very rarely,often,4,1,1,2,2,1,4,4,1,4,4,3,3,3,3,3,2,3,4,1,1,1,4,14,Moderate Addiction
+19 - 25,Male,2 years,less than a hour,Whenever took a phone,Very rarely,Very rarely,sometimes,Very rarely,rarely,rarely,3,4,2,1,2,2,3,5,3,3,0,2,3,4,0,5,5,1,1,3,1,2,2,10,Low Addiction
+19 - 25,Male,more than 5 years,more than 4 hours,Immediately only if it's important,rarely,sometimes,sometimes,sometimes,often,often,5,1,1,0,0,0,0,0,0,0,0,0,0,5,0,0,5,2,3,3,3,4,4,19,Moderate Addiction
+19 - 25,Female,more than 5 years,1 - 2 hours,I Don't respond if it's not important,rarely,sometimes,sometimes,rarely,rarely,rarely,0,5,4,3,3,1,4,4,3,4,3,3,3,2,3,1,1,2,3,3,2,2,2,14,Moderate Addiction
+19 - 25,Female,more than 5 years,1 - 2 hours,Whenever took a phone,sometimes,rarely,rarely,rarely,sometimes,often,0,5,5,5,5,5,5,4,4,4,4,2,3,3,3,4,4,3,2,2,2,3,4,16,Moderate Addiction
+19 - 25,Female,more than 5 years,2 - 3 hours,Whenever took a phone,Very rarely,sometimes,often,rarely,Very rarely,rarely,3,3,5,4,4,5,2,4,4,3,2,3,4,1,4,4,3,1,3,4,2,1,2,13,Moderate Addiction
+19 - 25,Female,more than 5 years,more than 4 hours,As soon as possible,rarely,sometimes,Very rarely,sometimes,sometimes,often,0,3,5,4,4,4,5,5,4,4,1,4,3,2,2,1,4,2,3,1,3,3,4,16,Moderate Addiction
+19 - 25,Male,4 years,3 - 4 hours,I Don't respond if it's not important,rarely,sometimes,Very rarely,sometimes,Very rarely,rarely,1,5,5,4,4,5,4,5,4,5,5,5,5,5,5,5,5,2,3,1,3,1,2,12,Moderate Addiction
+19 - 25,Male,more than 5 years,2 - 3 hours,Immediately only if it's important,rarely,sometimes,sometimes,rarely,sometimes,sometimes,3,4,4,2,4,3,1,4,5,2,5,1,3,4,5,2,4,2,3,3,2,3,3,16,Moderate Addiction
+13 - 18,Male,more than 5 years,more than 4 hours,Whenever took a phone,often,sometimes,sometimes,sometimes,often,often,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,4,3,3,3,4,4,21,High Risk Of Addiction
+19 - 25,Male,3 years,3 - 4 hours,Immediately,Very often,often,often,Very often,rarely,rarely,5,2,1,5,4,4,5,4,5,5,2,3,2,1,5,0,4,5,4,4,5,2,2,22,High Addiction
+13 - 18,Male,3 years,1 - 2 hours,Whenever took a phone,sometimes,rarely,sometimes,rarely,often,sometimes,0,5,5,5,5,5,5,5,5,5,5,1,5,4,5,5,3,3,2,3,2,4,3,17,Moderate Addiction
+19 - 25,Female,more than 5 years,2 - 3 hours,Whenever took a phone,rarely,Very rarely,rarely,Very rarely,Very rarely,rarely,5,5,5,5,5,5,5,5,4,3,4,5,4,5,5,5,5,2,1,2,1,1,2,9,Low Addiction
+19 - 25,Male,more than 5 years,less than a hour,I put off notifications,Very rarely,Very rarely,sometimes,Very often,Very rarely,rarely,0,5,5,5,0,2,0,5,5,3,1,5,5,5,5,5,4,1,1,3,5,1,2,13,Moderate Addiction
+19 - 25,Female,more than 5 years,3 - 4 hours,Immediately,Very rarely,sometimes,Very rarely,Very rarely,Very rarely,sometimes,3,3,4,4,5,5,1,5,5,3,3,1,5,2,5,2,5,1,3,1,1,1,3,10,Low Addiction
+19 - 25,Male,5 years,2 - 3 hours,Whenever took a phone,rarely,sometimes,Very rarely,sometimes,sometimes,often,4,4,5,5,5,5,5,5,4,5,5,5,5,3,5,3,3,2,3,1,3,3,4,16,Moderate Addiction
+19 - 25,Male,more than 5 years,1 - 2 hours,I Don't respond if it's not important,Very rarely,Very rarely,rarely,rarely,Very rarely,sometimes,1,5,5,5,5,3,2,1,5,3,5,5,5,5,3,3,5,1,1,2,2,1,3,10,Low Addiction
+19 - 25,Female,more than 5 years,1 - 2 hours,I Don't respond if it's not important,Very rarely,Very rarely,sometimes,sometimes,Very rarely,sometimes,5,5,5,0,0,5,5,5,5,1,1,1,5,5,5,0,5,1,1,3,3,1,3,12,Moderate Addiction
+> 35,Male,more than 5 years,1 - 2 hours,I Don't respond if it's not important,Very rarely,Very rarely,Very rarely,rarely,Very rarely,rarely,1,5,5,4,5,5,5,5,5,5,4,5,5,5,5,4,5,1,1,1,2,1,2,8,Low Addiction
+> 35,Male,more than 5 years,1 - 2 hours,I put off notifications,Very rarely,rarely,Very rarely,rarely,Very rarely,Very rarely,0,5,5,3,4,3,4,2,4,4,5,3,4,4,5,4,4,1,2,1,2,1,1,8,Low Addiction
+> 35,Male,more than 5 years,less than a hour,I Don't respond if it's not important,Very rarely,Very rarely,Very rarely,Very rarely,Very rarely,Very rarely,5,5,4,5,5,5,3,5,5,4,5,5,4,0,5,5,5,1,1,1,1,1,1,6,Low Addiction
+> 35,Male,more than 5 years,3 - 4 hours,I put off notifications,Very rarely,Very rarely,Very rarely,often,Very rarely,Very rarely,5,5,5,5,5,5,4,4,4,4,4,5,5,4,5,3,4,1,1,1,4,1,1,9,Low Addiction
+19 - 25,Male,3 years,1 - 2 hours,Immediately only if it's important,sometimes,rarely,Very rarely,sometimes,sometimes,rarely,2,2,4,3,4,3,4,3,4,5,5,4,5,5,5,3,5,3,2,1,3,3,2,14,Moderate Addiction
+26 - 35,Male,more than 5 years,1 - 2 hours,Immediately only if it's important,sometimes,sometimes,rarely,sometimes,rarely,sometimes,2,5,5,5,3,5,5,4,3,5,5,2,3,3,2,2,2,3,3,2,3,2,3,16,Moderate Addiction
+26 - 35,Male,more than 5 years,1 - 2 hours,I Don't respond if it's not important,Very often,rarely,Very rarely,sometimes,often,often,2,3,5,4,4,5,5,5,4,5,5,5,5,5,5,5,5,5,2,1,3,4,4,19,Moderate Addiction
+26 - 35,Male,5 years,2 - 3 hours,I Don't respond if it's not important,often,sometimes,sometimes,rarely,sometimes,Very rarely,3,4,4,1,2,2,1,4,4,4,4,4,2,0,5,4,4,4,3,3,2,3,1,16,Moderate Addiction
+19 - 25,Female,more than 5 years,more than 4 hours,Whenever took a phone,rarely,sometimes,Very often,sometimes,rarely,Very often,4,3,5,5,5,3,3,4,4,3,3,4,3,5,4,4,4,2,3,5,3,2,5,20,High Risk Of Addiction
+> 35,Female,more than 5 years,1 - 2 hours,Whenever took a phone,often,often,rarely,often,sometimes,often,5,5,5,5,5,5,5,5,1,5,5,5,5,5,5,4,5,4,4,2,4,3,4,21,High Addiction
+26 - 35,Male,more than 5 years,3 - 4 hours,I put off notifications,often,sometimes,Very rarely,rarely,rarely,Very often,2,0,2,2,4,4,5,4,3,4,3,2,4,4,4,4,4,4,3,1,2,2,5,17,Moderate Addiction
+26 - 35,Male,more than 5 years,2 - 3 hours,Immediately only if it's important,Very rarely,Very rarely,sometimes,often,Very rarely,Very rarely,2,5,5,3,5,4,5,5,5,5,5,4,5,5,5,3,5,1,1,3,4,1,1,11,Low Addiction
+19 - 25,Male,5 years,2 - 3 hours,I put off notifications,often,rarely,sometimes,often,Very rarely,Very rarely,3,5,0,3,4,5,5,3,1,5,3,2,5,5,5,3,4,4,2,3,4,1,1,15,Moderate Addiction
+26 - 35,Female,more than 5 years,less than a hour,I put off notifications,rarely,sometimes,rarely,sometimes,rarely,rarely,3,5,5,5,4,4,5,4,5,5,3,4,5,5,5,4,5,2,3,2,3,2,2,14,Moderate Addiction
+> 35,Male,more than 5 years,less than a hour,Immediately only if it's important,Very rarely,Very rarely,Very rarely,Very rarely,Very rarely,Very rarely,0,0,5,5,5,5,5,5,5,5,5,5,5,5,3,1,5,1,1,1,1,1,1,6,Low Addiction
+> 35,Male,5 years,2 - 3 hours,I Don't respond if it's not important,sometimes,rarely,Very rarely,often,often,sometimes,4,3,4,3,3,1,1,3,1,1,0,0,2,1,1,1,2,3,2,1,4,4,3,17,Moderate Addiction
+19 - 25,Male,4 years,2 - 3 hours,Whenever took a phone,rarely,often,rarely,sometimes,sometimes,often,4,5,4,3,4,3,1,2,5,4,1,3,1,1,1,2,3,2,4,2,3,3,4,18,Moderate Addiction
+13 - 18,Male,2 years,1 - 2 hours,Immediately only if it's important,sometimes,Very often,Very rarely,Very often,sometimes,Very often,5,1,5,0,5,5,5,5,5,1,5,1,5,5,5,3,5,3,5,1,5,3,5,22,High Risk Of Addiction
+19 - 25,Male,1 year,1 - 2 hours,Whenever took a phone,sometimes,often,often,rarely,sometimes,sometimes,1,5,5,1,5,1,0,1,5,5,5,0,5,5,5,1,5,3,4,4,2,3,3,19,Moderate Addiction
+> 35,Male,more than 5 years,2 - 3 hours,Whenever took a phone,rarely,sometimes,Very rarely,Very rarely,Very rarely,often,0,5,5,5,5,5,3,5,5,5,4,5,5,4,5,3,5,2,3,1,1,1,4,12,Moderate Addiction
+> 35,Male,more than 5 years,1 - 2 hours,Immediately only if it's important,rarely,sometimes,rarely,sometimes,Very rarely,Very rarely,2,4,0,3,2,4,4,1,3,3,1,2,3,1,4,2,3,2,3,2,3,1,1,12,Moderate Addiction
+19 - 25,Male,more than 5 years,1 - 2 hours,Immediately only if it's important,sometimes,rarely,sometimes,Very often,Very rarely,Very rarely,3,0,0,4,1,0,1,1,4,5,0,2,4,2,5,0,4,3,2,3,5,1,1,15,Moderate Addiction
+19 - 25,Male,more than 5 years,less than a hour,Whenever took a phone,rarely,rarely,sometimes,often,rarely,rarely,1,1,1,3,4,3,3,3,4,4,3,4,1,3,1,4,1,2,2,3,4,2,2,15,Moderate Addiction
+19 - 25,Male,more than 5 years,less than a hour,I Don't respond if it's not important,often,sometimes,Very rarely,rarely,sometimes,Very rarely,2,5,5,2,5,1,1,1,3,1,4,0,5,5,5,4,5,4,3,1,2,3,1,14,Moderate Addiction
+19 - 25,Female,5 years,1 - 2 hours,I put off notifications,rarely,rarely,rarely,rarely,rarely,rarely,1,3,4,4,4,4,2,3,3,2,3,3,4,4,5,3,5,2,2,2,2,2,2,12,Moderate Addiction
+26 - 35,Female,4 years,less than a hour,I Don't respond if it's not important,Very rarely,Very rarely,Very rarely,sometimes,Very often,Very rarely,0,5,5,5,4,5,5,4,4,5,5,5,5,4,4,2,5,1,1,1,3,5,1,12,Moderate Addiction
+19 - 25,Male,5 years,2 - 3 hours,As soon as possible,often,sometimes,Very rarely,often,rarely,Very rarely,4,3,5,4,4,5,4,4,4,2,5,5,5,5,5,4,5,4,3,1,4,2,1,15,Moderate Addiction
+19 - 25,Female,5 years,2 - 3 hours,I Don't respond if it's not important,Very rarely,Very rarely,Very rarely,rarely,Very rarely,Very rarely,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,1,1,2,1,1,7,Low Addiction
+> 35,Male,more than 5 years,1 - 2 hours,Immediately only if it's important,Very rarely,sometimes,often,rarely,sometimes,sometimes,0,0,0,5,0,0,1,5,1,5,1,1,1,5,0,1,0,1,3,4,2,3,3,16,Moderate Addiction
+19 - 25,Male,3 years,3 - 4 hours,As soon as possible,sometimes,often,rarely,often,sometimes,rarely,1,4,5,2,4,4,0,2,2,5,3,2,4,4,1,2,2,3,4,2,4,3,2,18,Moderate Addiction
+19 - 25,Female,5 years,2 - 3 hours,I Don't respond if it's not important,rarely,often,often,often,rarely,rarely,4,4,3,3,3,3,4,5,4,4,5,4,5,5,5,3,3,2,4,4,4,2,2,18,Moderate Addiction
+19 - 25,Male,more than 5 years,2 - 3 hours,Immediately only if it's important,rarely,rarely,Very rarely,Very rarely,Very rarely,rarely,3,5,5,5,3,1,2,3,1,5,5,4,5,5,5,5,5,2,2,1,1,1,2,9,Low Addiction
+19 - 25,Male,more than 5 years,less than a hour,I Don't respond if it's not important,rarely,sometimes,sometimes,rarely,rarely,rarely,3,4,5,4,4,5,4,5,3,4,2,2,5,5,5,0,5,2,3,3,2,2,2,14,Moderate Addiction
+19 - 25,Male,4 years,1 - 2 hours,I Don't respond if it's not important,sometimes,rarely,rarely,sometimes,Very rarely,rarely,2,5,5,5,3,5,4,5,1,5,3,4,5,3,5,3,3,3,2,2,3,1,2,13,Moderate Addiction
+19 - 25,Male,more than 5 years,2 - 3 hours,I Don't respond if it's not important,rarely,rarely,rarely,often,rarely,Very rarely,2,1,3,1,5,0,1,1,4,5,5,4,3,2,5,1,3,2,2,2,4,2,1,13,Moderate Addiction
