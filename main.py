@@ -1,13 +1,10 @@
 import pickle
-
 import pandas as pd
 import streamlit as st
+import altair as alt
 from sklearn.preprocessing import OrdinalEncoder, LabelEncoder
 from streamlit_option_menu import option_menu
-
 from json import load
-import altair as alt
-import catboost
 
 
 class Config:
@@ -26,7 +23,6 @@ config = Config()
 
 
 def ordinal_adiction_question_enumeration(dataframe):
-
     new_column_names = {
         "Education_Occupation__currently_doing_": "ORDINAL_Q1",
         "Social_media_apps_in_which_you_have_accounts": "ORDINAL_Q2",
@@ -45,8 +41,8 @@ def ordinal_adiction_question_enumeration(dataframe):
 
     dataframe.rename(columns=new_column_names, inplace=True)
 
-def selfesteem_question_enumeration(dataframe):
 
+def selfesteem_question_enumeration(dataframe):
     new_column_names_2 = {
         "I_am_satisfied_with_work_what_I_do_": "SELFESTEEM_Q1_POS",
         "At_times_I_think_I_am_no_good_at_all_": "SELFESTEEM_Q2_NEG",
@@ -61,10 +57,10 @@ def selfesteem_question_enumeration(dataframe):
     }
 
     dataframe.rename(columns=new_column_names_2, inplace=True)
+
+
 def job_category_sep(job):
-
     ogrenci_kelimeler = ['(UG)', '(PG)', 'PhD', 'scholar', 'પરીક્ષાની', 'net', 'B.ed', 'M.A', 'M. Ed']
-
 
     calisan_kelimeler = ['Doctor', 'Job', 'Housewife', 'Singer', 'writer', 'translator',
                          'Preparation for competitive exams', 'Preparation for government job',
@@ -80,7 +76,6 @@ def job_category_sep(job):
         return 'Others'
 
 
-
 def social_media_enc(dataframe):
     social_media_platforms = ['WhatsApp', 'Youtube', 'Instagram', 'Facebook', 'Twitter', 'Telegram', 'LinkedIn']
 
@@ -90,31 +85,6 @@ def social_media_enc(dataframe):
     for platform in social_media_platforms:
         dataframe[f'HAVE_{platform}_ACCOUNT'] = dataframe["ORDINAL_Q2"].apply(
             lambda x: 1 if platform in x else 0)
-
-
-# def social_media_enc(dataframe):
-#
-#     social_media_platforms = ['WhatsApp', 'Youtube', 'Instagram', 'Facebook', 'Twitter', 'Telegram', 'LinkedIn']
-#
-#     # ORDINAL_Q2 sütunundaki değerleri kontrol eden ve işleyen bir lambda fonksiyonu ekliyoruz.
-#     def process_ordinal_q2(x):
-#         if not isinstance(x, str):
-#             return 0  # Eğer x bir string değilse (None, NaN vs.), 0 döndür.
-#         platforms = x.split(',')
-#         return 1 if any(platform not in social_media_platforms for platform in platforms) else 0
-#
-#     dataframe['HAVE_OTHER_ACCOUNT'] = dataframe['ORDINAL_Q2'].apply(process_ordinal_q2)
-#
-#     for platform in social_media_platforms:
-#         # Benzer bir kontrol her platform için de yapılıyor.
-#         dataframe[f'HAVE_{platform}_ACCOUNT'] = dataframe['ORDINAL_Q2'].apply(
-#             lambda x: 1 if isinstance(x, str) and platform in x else 0
-#         )
-#
-#     return dataframe  # İşlenmiş dataframe'i geri döndür.
-
-
-
 
 
 def social_media_active_enc(dataframe):
@@ -152,11 +122,14 @@ def social_media_calculator(dataframe, col_names):
 
     dataframe.drop(["ORDINAL_Q2", "ORDINAL_Q3"], axis=1, inplace=True)
 
-def ordinal_enc(dataframe):
 
-    columns_to_encode_addiction = ["ADDICTION_Q1", "ADDICTION_Q2", "ADDICTION_Q3", "ADDICTION_Q4", "ADDICTION_Q5", "ADDICTION_Q6"]
-    columns_to_encode_categories_selfesteem_pos = ["SELFESTEEM_Q1_POS", "SELFESTEEM_Q3_POS", "SELFESTEEM_Q4_POS", "SELFESTEEM_Q7_POS", "SELFESTEEM_Q10_POS"]
-    columns_to_encode_categories_selfesteem_neg = ["SELFESTEEM_Q2_NEG", "SELFESTEEM_Q5_NEG", "SELFESTEEM_Q6_NEG", "SELFESTEEM_Q8_NEG", "SELFESTEEM_Q9_NEG"]
+def ordinal_enc(dataframe):
+    columns_to_encode_addiction = ["ADDICTION_Q1", "ADDICTION_Q2", "ADDICTION_Q3", "ADDICTION_Q4", "ADDICTION_Q5",
+                                   "ADDICTION_Q6"]
+    columns_to_encode_categories_selfesteem_pos = ["SELFESTEEM_Q1_POS", "SELFESTEEM_Q3_POS", "SELFESTEEM_Q4_POS",
+                                                   "SELFESTEEM_Q7_POS", "SELFESTEEM_Q10_POS"]
+    columns_to_encode_categories_selfesteem_neg = ["SELFESTEEM_Q2_NEG", "SELFESTEEM_Q5_NEG", "SELFESTEEM_Q6_NEG",
+                                                   "SELFESTEEM_Q8_NEG", "SELFESTEEM_Q9_NEG"]
 
     columns_to_encode_ORDINAL_Q4 = ["ORDINAL_Q4"]
     columns_to_encode_ORDINAL_Q5 = ["ORDINAL_Q5"]
@@ -207,12 +180,12 @@ def data_fixer(dataframe):
 
 
 def label_enc(dataframe):
-
     columns_to_encode_addiction = ["AGE", "GENDER", "ORDINAL_Q1", "ORDINAL_Q4", "ORDINAL_Q5"]
 
     for column in columns_to_encode_addiction:
         label_encoder = LabelEncoder()
         dataframe[column] = label_encoder.fit_transform(dataframe[[column]])
+
 
 def categorize_addiction_score(row):
     if 13 < row <= 24:
@@ -222,15 +195,14 @@ def categorize_addiction_score(row):
     else:
         return 0
 
+
 def calculate_addiction_score(dataframe):
     addiction_columns = ["ADDICTION_Q1", "ADDICTION_Q2", "ADDICTION_Q3",
                          "ADDICTION_Q4", "ADDICTION_Q5", "ADDICTION_Q6"]
     dataframe["ADDICTION_SCORE"] = dataframe[addiction_columns].sum(axis=1)
     dataframe["ADDICTION_CATEGORY"] = dataframe["ADDICTION_SCORE"].apply(categorize_addiction_score)
 
-# (SOCIAL_MEDIA_COUNT_COMBINED_ORDINAL_Q3 / SOCIAL_MEDIA_COUNT_COMBINED_ORDINAL_Q2) * SELFESTEEM_SCORE = SELFESTEEM_SCORE_WEİGHTED
-# SELFESTEEM_Qi_POS = SELFESTEM_POS_SCORE
-# SELFESTEEM_Qi_NEG = SELFESTEM_NEG_SCORE
+
 def categorize_selfesteem_score(row):
     if 20 < row <= 30:
         return 0
@@ -238,11 +210,12 @@ def categorize_selfesteem_score(row):
         return 1
     else:
         return 2
-#
+
+
 def calculate_selfesteem_score(dataframe):
     selfesteem_columns = ["SELFESTEEM_Q1_POS", "SELFESTEEM_Q2_NEG", "SELFESTEEM_Q3_POS",
-                         "SELFESTEEM_Q4_POS", "SELFESTEEM_Q5_NEG", "SELFESTEEM_Q6_NEG",
-                         "SELFESTEEM_Q7_POS" ,"SELFESTEEM_Q8_NEG",  "SELFESTEEM_Q9_NEG",  "SELFESTEEM_Q10_POS"]
+                          "SELFESTEEM_Q4_POS", "SELFESTEEM_Q5_NEG", "SELFESTEEM_Q6_NEG",
+                          "SELFESTEEM_Q7_POS", "SELFESTEEM_Q8_NEG", "SELFESTEEM_Q9_NEG", "SELFESTEEM_Q10_POS"]
     dataframe["SELFESTEEM_SCORE"] = dataframe[selfesteem_columns].sum(axis=1)
     # Calculate SELFESTEEM_SCORE_WEIGHTED
     dataframe['SELFESTEEM_SCORE_WEIGHTED'] = (dataframe['SOCIAL_MEDIA_COUNT_COMBINED_ORDINAL_Q3'] / dataframe[
@@ -261,6 +234,7 @@ def calculate_selfesteem_score(dataframe):
     # feature olarak ekle.
     dataframe["SELFESTEEM_CATEGORY"] = dataframe["SELFESTEEM_SCORE"].apply(categorize_selfesteem_score)
 
+
 def data_prep(dataframe):
     dataframe.columns = ["".join(char if char.isalnum() else "_" for char in col) for col in dataframe.columns]
     ordinal_adiction_question_enumeration(dataframe)
@@ -268,11 +242,8 @@ def data_prep(dataframe):
     social_media_enc(dataframe)
     social_media_active_enc(dataframe)
 
-
     social_media_calculator(dataframe, col_names=["ORDINAL_Q2", "ORDINAL_Q3"])
-    #ordinal_enc(dataframe)
     data_fixer(dataframe)
-    #label_enc(dataframe)
 
     def categorize_addiction_score(row):
         if 13 < row <= 24:
@@ -295,7 +266,6 @@ def data_prep(dataframe):
     calculate_selfesteem_score(dataframe)
 
     dataframe['ADDICTION_CATEGORY'] = dataframe['ADDICTION_CATEGORY'].replace('2', '1')
-
     dataframe['ADDICTION_CATEGORY'] = [1 if value == 2 else value for value in dataframe['ADDICTION_CATEGORY']]
 
     dataframe = dataframe.drop(columns=[col for col in dataframe.columns if 'ADDICTION' in col])
@@ -311,15 +281,11 @@ def data_prep(dataframe):
                                          "ACTIVE_TWITTER_USER", "ACTIVE_TELEGRAM_USER", "ACTIVE_LINKEDIN_USER",
                                          "SELFESTEEM_CATEGORY"]
 
-
     X = dataframe
     return X, cat_variables_df_profile_analysis
 
 
-
 def main():
-
-
     model = pickle.load(open("catboost.pkl", 'rb'))
     data = pd.read_csv("survey_data.csv")
 
@@ -339,7 +305,6 @@ def main():
         unsafe_allow_html=True,
     )
 
-
     with st.sidebar:
         language_picker = st.selectbox('Change Language', options=['🇹🇷 Türkçe', '🇬🇧 English'])
 
@@ -348,8 +313,10 @@ def main():
         else:
             translation = config.ENG
 
-        options = [translation["PAGE_OPTIONS_SOCIAL_TITLE"], translation["PAGE_OPTIONS_ADDICTON_TEST"], translation["PAGE_OPTIONS_BLOG"],
-                   translation["PAGE_OPTIONS_OUR_GLOAL"], translation["PAGE_OPTIONS_CONTACT_US"], translation["PAGE_OPTIONS_DEVELOPERS"]]
+        options = [translation["PAGE_OPTIONS_SOCIAL_TITLE"], translation["PAGE_OPTIONS_ADDICTON_TEST"],
+                   translation["PAGE_OPTIONS_BLOG"],
+                   translation["PAGE_OPTIONS_OUR_GLOAL"], translation["PAGE_OPTIONS_CONTACT_US"],
+                   translation["PAGE_OPTIONS_DEVELOPERS"]]
         selected_option = option_menu(translation["SIDEBAR_TITLE"], options,
                                       icons=['bi bi-house',
                                              'bi bi-bar-chart-fill',
@@ -411,7 +378,6 @@ def main():
 
         # Anket soruları ve cevap türleri
 
-
         with st.container(border=True):
             col1, col2, col3 = st.columns(3)
             with col1:
@@ -422,7 +388,8 @@ def main():
             with col2:
                 gender_options = ['Female', 'Male']
                 st.session_state.gender_options = gender_options
-                gender = gender_options.index(st.selectbox(translation["SELECTBOX_GENDER"], gender_options, key='gender_select'))
+                gender = gender_options.index(
+                    st.selectbox(translation["SELECTBOX_GENDER"], gender_options, key='gender_select'))
                 st.session_state.gender = gender
             with col3:
                 ordinal_q1_options = ['Employed', 'Student']
@@ -442,11 +409,11 @@ def main():
                 st.session_state.ordinal_q3 = ORDINAL_Q3
 
             with col1:
-                ordinal_q4_options = ["less than a year", "1 year", "2 years", "3 years", "4 years", "5 years", "more than 5 years"]
+                ordinal_q4_options = ["less than a year", "1 year", "2 years", "3 years", "4 years", "5 years",
+                                      "more than 5 years"]
                 ORDINAL_Q4 = ordinal_q4_options.index(st.selectbox(translation["SELECTBOX_Q4"], ordinal_q4_options))
 
             with col2:
-
                 ordinal_q5_options = ["less than a hour", "1 - 2hours", "2 - 3 hours", "3 - 4 hours", "> 4 hours"]
                 ORDINAL_Q5 = ordinal_q5_options.index(st.selectbox(translation["SELECTBOX_Q5"], ordinal_q5_options))
 
@@ -472,18 +439,29 @@ def main():
             categories_selfesteem_pos_ordering = ['Strongly disagree', 'Disagree', 'Agree', 'Strongly agree']
             categories_selfesteem_neg_ordering = ['Strongly agree', 'Agree', 'Disagree', 'Strongly disagree']
 
-            SELFESTEEM_Q1_POS = categories_selfesteem_pos_ordering.index(st.selectbox(translation["SELECTBOX_SELFESTEEM_Q1"], categories_selfesteem_options))
-            SELFESTEEM_Q2_NEG = categories_selfesteem_neg_ordering.index(st.selectbox(translation["SELECTBOX_SELFESTEEM_Q2"], categories_selfesteem_options))
-            SELFESTEEM_Q3_POS = categories_selfesteem_pos_ordering.index(st.selectbox(translation["SELECTBOX_SELFESTEEM_Q3"], categories_selfesteem_options))
-            SELFESTEEM_Q4_POS = categories_selfesteem_pos_ordering.index(st.selectbox(translation["SELECTBOX_SELFESTEEM_Q4"], categories_selfesteem_options))
-            SELFESTEEM_Q5_NEG = categories_selfesteem_neg_ordering.index(st.selectbox(translation["SELECTBOX_SELFESTEEM_Q5"], categories_selfesteem_options))
-            SELFESTEEM_Q6_NEG = categories_selfesteem_neg_ordering.index(st.selectbox(translation["SELECTBOX_SELFESTEEM_Q6"], categories_selfesteem_options, key="SELECTBOX_SELFESTEEM_Q6"))
-            SELFESTEEM_Q7_POS = categories_selfesteem_pos_ordering.index(st.selectbox(translation["SELECTBOX_SELFESTEEM_Q7"], categories_selfesteem_options))
-            SELFESTEEM_Q8_NEG = categories_selfesteem_neg_ordering.index(st.selectbox(translation["SELECTBOX_SELFESTEEM_Q8"], categories_selfesteem_options))
-            SELFESTEEM_Q9_NEG = categories_selfesteem_neg_ordering.index(st.selectbox(translation["SELECTBOX_SELFESTEEM_Q9"], categories_selfesteem_options))
-            SELFESTEEM_Q10_POS = categories_selfesteem_pos_ordering.index(st.selectbox(translation["SELECTBOX_SELFESTEEM_Q10"], categories_selfesteem_options))
+            SELFESTEEM_Q1_POS = categories_selfesteem_pos_ordering.index(
+                st.selectbox(translation["SELECTBOX_SELFESTEEM_Q1"], categories_selfesteem_options))
+            SELFESTEEM_Q2_NEG = categories_selfesteem_neg_ordering.index(
+                st.selectbox(translation["SELECTBOX_SELFESTEEM_Q2"], categories_selfesteem_options))
+            SELFESTEEM_Q3_POS = categories_selfesteem_pos_ordering.index(
+                st.selectbox(translation["SELECTBOX_SELFESTEEM_Q3"], categories_selfesteem_options))
+            SELFESTEEM_Q4_POS = categories_selfesteem_pos_ordering.index(
+                st.selectbox(translation["SELECTBOX_SELFESTEEM_Q4"], categories_selfesteem_options))
+            SELFESTEEM_Q5_NEG = categories_selfesteem_neg_ordering.index(
+                st.selectbox(translation["SELECTBOX_SELFESTEEM_Q5"], categories_selfesteem_options))
+            SELFESTEEM_Q6_NEG = categories_selfesteem_neg_ordering.index(
+                st.selectbox(translation["SELECTBOX_SELFESTEEM_Q6"], categories_selfesteem_options,
+                             key="SELECTBOX_SELFESTEEM_Q6"))
+            SELFESTEEM_Q7_POS = categories_selfesteem_pos_ordering.index(
+                st.selectbox(translation["SELECTBOX_SELFESTEEM_Q7"], categories_selfesteem_options))
+            SELFESTEEM_Q8_NEG = categories_selfesteem_neg_ordering.index(
+                st.selectbox(translation["SELECTBOX_SELFESTEEM_Q8"], categories_selfesteem_options))
+            SELFESTEEM_Q9_NEG = categories_selfesteem_neg_ordering.index(
+                st.selectbox(translation["SELECTBOX_SELFESTEEM_Q9"], categories_selfesteem_options))
+            SELFESTEEM_Q10_POS = categories_selfesteem_pos_ordering.index(
+                st.selectbox(translation["SELECTBOX_SELFESTEEM_Q10"], categories_selfesteem_options))
 
-        # Cevapları veri çerçevesine ekle (MULTISELECTE DİKKAT)
+        # Cevapları veri çerçevesine ekle
         df.loc[0] = [
             age,
             gender,
@@ -517,11 +495,7 @@ def main():
         if st.button(translation["SUBMIT_BUTTON_ADDICTION"]):
             st.title(translation["ADDICTION_RESULT_TITLE"])
 
-
-            X, cat_variables_df_profile_analysis = data_prep(df) #pipline fonk ile verinin işlenmesi
-
-
-
+            X, cat_variables_df_profile_analysis = data_prep(df)
 
             X = X.drop("ACTIVE_OTHER_USER", axis=1)
             X = X.drop("HAVE_OTHER_ACCOUNT", axis=1)
@@ -530,85 +504,81 @@ def main():
 
             if (df["ADDICTION_CATEGORY"] == 1).any():
 
-                    st.session_state["prediction_value"] = 2
-                    st.session_state["prediction_proba"] = 100
+                st.session_state["prediction_value"] = 2
+                st.session_state["prediction_proba"] = 100
 
-                    st.error(translation["ADDICTION_WARNING_DANGER_W1"])
-                    st.write(translation["ADDICTION_WARNING_DANGER_W2"])
+                st.error(translation["ADDICTION_WARNING_DANGER_W1"])
+                st.write(translation["ADDICTION_WARNING_DANGER_W2"])
 
-                    tips_dict = {
-                    "t1" : translation["ADDICTION_TIP_T1"],
-                    "t2" : translation["ADDICTION_TIP_T2"],
-                    "t3" : translation["ADDICTION_TIP_T3"],
-                    "t4" : translation["ADDICTION_TIP_T4"],
-                    "t5" : translation["ADDICTION_TIP_T5"],
-                    "t6" : translation["ADDICTION_TIP_T6"],
-                    "t7" : translation["ADDICTION_TIP_T7"],
-                    "t8" : translation["ADDICTION_TIP_T8"],
-                    "t9" : translation["ADDICTION_TIP_T9"],
-                    "t10" : translation["ADDICTION_TIP_T10"],
-                    "t11" : translation["ADDICTION_TIP_T11"],
-                    "t12" : translation["ADDICTION_TIP_T12"],
-                    "t13" : translation["ADDICTION_TIP_T13"],
-                    "t14" : translation["ADDICTION_TIP_T14"],
-                    "t15" : translation["ADDICTION_TIP_T15"],
-                    "t16" :  translation["ADDICTION_TIP_T16"],
-                    "t17" : translation["ADDICTION_TIP_T17"]
-                    }
+                tips_dict = {
+                    "t1": translation["ADDICTION_TIP_T1"],
+                    "t2": translation["ADDICTION_TIP_T2"],
+                    "t3": translation["ADDICTION_TIP_T3"],
+                    "t4": translation["ADDICTION_TIP_T4"],
+                    "t5": translation["ADDICTION_TIP_T5"],
+                    "t6": translation["ADDICTION_TIP_T6"],
+                    "t7": translation["ADDICTION_TIP_T7"],
+                    "t8": translation["ADDICTION_TIP_T8"],
+                    "t9": translation["ADDICTION_TIP_T9"],
+                    "t10": translation["ADDICTION_TIP_T10"],
+                    "t11": translation["ADDICTION_TIP_T11"],
+                    "t12": translation["ADDICTION_TIP_T12"],
+                    "t13": translation["ADDICTION_TIP_T13"],
+                    "t14": translation["ADDICTION_TIP_T14"],
+                    "t15": translation["ADDICTION_TIP_T15"],
+                    "t16": translation["ADDICTION_TIP_T16"],
+                    "t17": translation["ADDICTION_TIP_T17"]
+                }
 
+                tip_list = ["t5", "t7", "t8", "t15", "t17"]
+                tips_for_q5_0 = ["t3", "t8", "t9", "t13", "t17"]
+                tips_for_q5_1 = ["t13", "t15"]
+                tips_for_q5_2 = ["t2", "t3", "t5", "t15"]
+                tips_for_q5_3 = ["t5", "t6", "t8", "t10", "t13"]
+                tips_for_q5_4 = ["t17"]
+                tips_for_q6_0 = ["t13", "t14", "t15"]
+                tips_for_q6_1 = ["t2", "t13", "t15"]
+                tips_for_q6_2 = ["t5"]
+                tips_for_q6_3 = ["t3"]
+                tips_for_q6_4 = []
+                tips_for_q6_5 = ["t9", "t15"]
 
+                if (df["ORDINAL_Q5"] == 0).any():
+                    tip_list.extend(tips_for_q5_0)
+                elif (df["ORDINAL_Q5"] == 1).any():
+                    tip_list.extend(tips_for_q5_1)
+                elif (df["ORDINAL_Q5"] == 2).any():
+                    tip_list.extend(tips_for_q5_2)
+                elif (df["ORDINAL_Q5"] == 3).any():
+                    tip_list.extend(tips_for_q5_3)
+                elif (df["ORDINAL_Q5"] == 4).any():
+                    tip_list.extend(tips_for_q5_4)
 
+                if (df["ORDINAL_Q6"] == 0).any():
+                    tip_list.extend(tips_for_q6_0)
+                elif (df["ORDINAL_Q6"] == 1).any():
+                    tip_list.extend(tips_for_q6_1)
+                elif (df["ORDINAL_Q6"] == 2).any():
+                    tip_list.extend(tips_for_q6_2)
+                elif (df["ORDINAL_Q6"] == 3).any():
+                    tip_list.extend(tips_for_q6_3)
+                elif (df["ORDINAL_Q6"] == 4).any():
+                    tip_list.extend(tips_for_q6_4)
+                elif (df["ORDINAL_Q6"] == 5).any():
+                    tip_list.extend(tips_for_q6_5)
 
-                    tip_list = ["t5", "t7", "t8", "t15", "t17"]
-                    tips_for_q5_0 = ["t3", "t8", "t9", "t13", "t17"]
-                    tips_for_q5_1 = ["t13", "t15"]
-                    tips_for_q5_2 = ["t2", "t3", "t5", "t15"]
-                    tips_for_q5_3= ["t5", "t6", "t8", "t10", "t13"]
-                    tips_for_q5_4 = ["t17"]
-                    tips_for_q6_0 = ["t13", "t14", "t15"]
-                    tips_for_q6_1 = ["t2", "t13", "t15"]
-                    tips_for_q6_2 = ["t5"]
-                    tips_for_q6_3 = ["t3"]
-                    tips_for_q6_4 = []
-                    tips_for_q6_5 = ["t9", "t15"]
+                tip_list = list(set(tip_list))
+                values_list = [tips_dict.get(key) for key in tip_list]
 
+                for value in values_list:
+                    st.info(f"Tip: {value}")
 
-                    if (df["ORDINAL_Q5"] == 0).any():
-                        tip_list.extend(tips_for_q5_0)
-                    elif (df["ORDINAL_Q5"] == 1).any():
-                        tip_list.extend(tips_for_q5_1)
-                    elif (df["ORDINAL_Q5"] == 2).any():
-                        tip_list.extend(tips_for_q5_2)
-                    elif (df["ORDINAL_Q5"] == 3).any():
-                        tip_list.extend(tips_for_q5_3)
-                    elif (df["ORDINAL_Q5"] == 4).any():
-                        tip_list.extend(tips_for_q5_4)
-
-                    if (df["ORDINAL_Q6"] == 0).any():
-                        tip_list.extend(tips_for_q6_0)
-                    elif (df["ORDINAL_Q6"] == 1).any():
-                        tip_list.extend(tips_for_q6_1)
-                    elif (df["ORDINAL_Q6"] == 2).any():
-                        tip_list.extend(tips_for_q6_2)
-                    elif (df["ORDINAL_Q6"] == 3).any():
-                        tip_list.extend(tips_for_q6_3)
-                    elif (df["ORDINAL_Q6"] == 4).any():
-                        tip_list.extend(tips_for_q6_4)
-                    elif (df["ORDINAL_Q6"] == 5).any():
-                        tip_list.extend(tips_for_q6_5)
-
-                    tip_list = list(set(tip_list))
-                    values_list = [tips_dict.get(key) for key in tip_list]
-
-                    for value in values_list:
-                        st.info(f"Tip: {value}")
-
-                    st.success(translation["WARNING_GENERAL"])
+                st.success(translation["WARNING_GENERAL"])
 
 
             else:
                 predictions = model.predict(X)
-                proba = model.predict_proba(X)[0,1]
+                proba = model.predict_proba(X)[0, 1]
                 st.session_state["prediction_value"] = predictions
                 st.session_state["prediction_proba"] = proba
 
@@ -644,8 +614,9 @@ def main():
 
                         bar_chart_data = data[data["Age"] == age_option]
                         bar_chart_data = bar_chart_data["ADDICTION_CATEGORY"].value_counts(normalize=True) * 100
-                        bar_chart_data = bar_chart_data.rename({1 : "Bağımlı", 0: "Bağımlı Değil"}).reset_index()
-                        bar_chart_data = bar_chart_data.rename({"ADDICTION_CATEGORY": "Bağılımlılık Durumu", "proportion": "Bağımlılık Oranı"}, axis=1)
+                        bar_chart_data = bar_chart_data.rename({1: "Bağımlı", 0: "Bağımlı Değil"}).reset_index()
+                        bar_chart_data = bar_chart_data.rename(
+                            {"ADDICTION_CATEGORY": "Bağılımlılık Durumu", "proportion": "Bağımlılık Oranı"}, axis=1)
 
                         c = (
                             alt.Chart(bar_chart_data)
@@ -665,9 +636,9 @@ def main():
 
                         bar_chart_gender = data[data["Gender"] == gender_option]
                         bar_chart_gender = bar_chart_gender["ADDICTION_CATEGORY"].value_counts(normalize=True) * 100
-                        bar_chart_gender = bar_chart_gender.rename({1 : "Bağımlı", 0: "Bağımlı Değil"}).reset_index()
-                        bar_chart_gender = bar_chart_gender.rename({"ADDICTION_CATEGORY": "Bağılımlılık Durumu", "proportion": "Bağımlılık Oranı"}, axis=1)
-
+                        bar_chart_gender = bar_chart_gender.rename({1: "Bağımlı", 0: "Bağımlı Değil"}).reset_index()
+                        bar_chart_gender = bar_chart_gender.rename(
+                            {"ADDICTION_CATEGORY": "Bağılımlılık Durumu", "proportion": "Bağımlılık Oranı"}, axis=1)
 
                         c = (
                             alt.Chart(bar_chart_gender)
@@ -687,25 +658,32 @@ def main():
 
                         data['Bağımlılık Durumu'] = data['ADDICTION_CATEGORY'].apply(
                             lambda x: 'Bağımlı' if x == 1 else 'Bağımlı Değil')
-                        data = data.rename({'SOCIAL_MEDIA_COUNT_COMBINED_ORDINAL_Q2': 'Sosyal Medya Hesap Sayısı', "SOCIAL_MEDIA_COUNT_COMBINED_ORDINAL_Q3": "Aktif Kullanılan Sosyal Medya"}, axis=1)
+                        data = data.rename({'SOCIAL_MEDIA_COUNT_COMBINED_ORDINAL_Q2': 'Sosyal Medya Hesap Sayısı',
+                                            "SOCIAL_MEDIA_COUNT_COMBINED_ORDINAL_Q3": "Aktif Kullanılan Sosyal Medya"},
+                                           axis=1)
                         scatter_plot = (
                             alt.Chart(data)
                             .mark_circle()
                             .encode(
                                 x='Sosyal Medya Hesap Sayısı',
                                 y='Aktif Kullanılan Sosyal Medya',
-                                color=alt.Color('Bağımlılık Durumu', scale=alt.Scale(domain=['Bağımlı', 'Bağımlı Değil'], range=['#ed145b', '#1f77b4']), legend=alt.Legend(title="Bağımlılık Durumu"))
+                                color=alt.Color('Bağımlılık Durumu',
+                                                scale=alt.Scale(domain=['Bağımlı', 'Bağımlı Değil'],
+                                                                range=['#ed145b', '#1f77b4']),
+                                                legend=alt.Legend(title="Bağımlılık Durumu"))
                             )
                         )
                         ordinal_q2 = len(st.session_state.ordinal_q2)
                         ordinal_q3 = len(st.session_state.ordinal_q3)
                         prediction = st.session_state.prediction_value
 
-                        if prediction == 1 or prediction ==2:
+                        if prediction == 1 or prediction == 2:
                             result = 'Bağımlı'
                         else:
                             result = 'Bağımlı Değil'
-                        highlight_point = pd.DataFrame({"Sosyal Medya Hesap Sayısı": ordinal_q2, "Aktif Kullanılan Sosyal Medya": ordinal_q3, "Bağımlılık Durumu": result}, index=[0])
+                        highlight_point = pd.DataFrame(
+                            {"Sosyal Medya Hesap Sayısı": ordinal_q2, "Aktif Kullanılan Sosyal Medya": ordinal_q3,
+                             "Bağımlılık Durumu": result}, index=[0])
 
                         highlight_layer = (
                             alt.Chart(highlight_point)
@@ -736,26 +714,19 @@ def main():
                 st.markdown('### Sosyal Medya Kullanım Süresi Grafiği')
                 if not data.empty:
                     data['Bağımlılık Durumu'] = data['ADDICTION_CATEGORY'].apply(
-                            lambda x: 'Bağımlı' if x == 1 else 'Bağımlı Değil')
+                        lambda x: 'Bağımlı' if x == 1 else 'Bağımlı Değil')
 
-
-                    pie_chart_data = data["Average_time_you_spent_on_social_media_everyday"].value_counts(normalize=True) * 100
+                    pie_chart_data = data["Average_time_you_spent_on_social_media_everyday"].value_counts(
+                        normalize=True) * 100
                     pie_chart_data = pie_chart_data.reset_index().rename(
-                        {"Average_time_you_spent_on_social_media_everyday": "Sosyal Medyada Kullanımı", "proportion": "Sosyal Medyada Geçirilen Süre"}, axis=1)
+                        {"Average_time_you_spent_on_social_media_everyday": "Sosyal Medyada Kullanımı",
+                         "proportion": "Sosyal Medyada Geçirilen Süre"}, axis=1)
 
                     pie_chart = alt.Chart(pie_chart_data).mark_arc(innerRadius=50).encode(
                         theta="Sosyal Medyada Geçirilen Süre",
                         color="Sosyal Medyada Kullanımı",
                     )
                     st.altair_chart(pie_chart, use_container_width=True)
-
-
-
-
-
-
-
-
 
     elif selected_option == translation["PAGE_OPTIONS_BLOG"]:
         with st.container(border=True):
@@ -779,12 +750,10 @@ def main():
 
         generate_goal_textbox(translation["OUR_GOAL_TITLE"], translation["OUR_GOAL_TEXT"])
 
-        # Example of using the function in a Streamlit app
-
 
     elif selected_option == translation["PAGE_OPTIONS_CONTACT_US"]:
 
-        # Burada ikinci sayfa içeriğini oluşturabilirsiniz
+        # Burada ikinci sayfa içeriğini oluşturabilirsiniz.
         # İletişim sayfasının içeriğini doldurabilirsiniz: formlar, iletişim bilgileri vb.
 
         st.subheader(translation["BLOG_PAGE_TITLE"])
@@ -793,7 +762,7 @@ def main():
         message = st.text_area(translation["CONTACT_PAGE_MESSAGE"])
 
         if st.button(translation["CONTACT_PAGE_SUBMIT"]):
-            # Kullanıcıdan alınan bilgilerle bir DataFrame oluştur
+            # Kullanıcıdan alınan bilgilerle bir DataFrame oluştur.
             contact_data = {
                 "Ad": [name],
                 "E-posta": [email],
@@ -801,12 +770,12 @@ def main():
             }
             contact_df = pd.DataFrame(contact_data)
 
-
-            # Teşekkür mesajını göster
+            # Teşekkür mesajını göster.
             st.success(translation["SURVEY_PLEASING"])
 
     elif selected_option == translation["PAGE_OPTIONS_DEVELOPERS"]:
         st.title(translation["DEVELOPERS_PAGE_TITLE"])
+
         def profile_card(name, username, bio, bio2, image_url, social_links):
             st.markdown(
                 f"""
@@ -836,8 +805,6 @@ def main():
                 profile_card(**translation["PROJECT_DEVELOPER_BUSE"])
             with col3:
                 profile_card(**translation["PROJECT_DEVELOPER_CANMERT"])
-
-
 
     page_bg_img = f"""
     <style>
@@ -915,9 +882,6 @@ def main():
     </style>
     """
     st.markdown(page_bg_img, unsafe_allow_html=True)
-
-
-
 
 
 if __name__ == "__main__":
