@@ -286,7 +286,7 @@ def data_prep(dataframe):
 
 
 def main():
-    model = pickle.load(open("catboost.pkl", 'rb'))
+    model = pickle.load(open("model/catboost.pkl", 'rb'))
     data = pd.read_csv("survey_data.csv")
 
     PAGE_TITLE = "Sosyal Medya Bağımlılık"
