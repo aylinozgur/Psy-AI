@@ -829,15 +829,13 @@ def main():
             )
 
         with st.container():
-            col1, col2, col3, col4 = st.columns(4, gap="large")
+            col1, col2, col3 = st.columns(3, gap="large")
             with col1:
                 profile_card(**translation["PROJECT_DEVELOPER_AYLIN"])
             with col2:
                 profile_card(**translation["PROJECT_DEVELOPER_BUSE"])
             with col3:
                 profile_card(**translation["PROJECT_DEVELOPER_CANMERT"])
-            with col4:
-                profile_card(**translation["PROJECT_DEVELOPER_GAMZE"])
 
 
 
